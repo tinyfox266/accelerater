@@ -42,6 +42,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is the main Activity that displays the current chat session.
@@ -66,6 +72,7 @@ public class BluetoothChat extends Activity implements SensorListener{
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
     private static final int REQUEST_ENABLE_BT = 3;
+    private static final int REQUEST_OPEN_FILE = 4;
 
     // Layout Views
     private ListView mConversationView;
@@ -74,8 +81,10 @@ public class BluetoothChat extends Activity implements SensorListener{
    
     private Button mHexModeButton;
     private Button mCharModeButton;
+    private Button mBeginButton;    
     private Button mStopButton;
     private Button mOpenButton;
+    private Button mCleanButton;
 
     // Name of the connected device
     private String mConnectedDeviceName = null;
@@ -93,6 +102,7 @@ public class BluetoothChat extends Activity implements SensorListener{
     private final int mChanNum = 3;
     private final int mSendDuration = 1000; // 10 times per second
     private long lastUpdate;
+    private int mStop = 0;
     
     
     private SensorManager mSensorManager;
@@ -201,6 +211,51 @@ public class BluetoothChat extends Activity implements SensorListener{
             }
         });
         
+        mHexModeButton = (Button) findViewById(R.id.button_hex_mode);
+        mHexModeButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                mShowMode = mHexMode;
+            }
+        });
+        
+        mCharModeButton = (Button) findViewById(R.id.button_char_mode); 
+        mCharModeButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                mShowMode = mCharMode;
+            }
+        });
+        
+        mCleanButton = (Button) findViewById(R.id.button_clean); 
+        mCleanButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                mConversationArrayAdapter.clear();
+            }
+        });
+        
+        mStopButton = (Button) findViewById(R.id.button_stop);  
+        mStopButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                mStop = 1;
+            }
+        });
+        
+        mBeginButton = (Button) findViewById(R.id.button_begin);  
+        mBeginButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                mStop = 0;
+            }
+        });
+        
+        mOpenButton = (Button) findViewById(R.id.button_open);
+        
+        mOpenButton.setOnClickListener(new OnClickListener () {
+            public void onClick(View v) {
+                Intent intent = new Intent(BluetoothChat.this, MyFileManager.class);
+                startActivityForResult(intent, REQUEST_OPEN_FILE);
+            }
+        });        
+        
+       // mOpenButton = (Button) fineViewById(R.id.button_open);
         
 
         // Initialize the BluetoothChatService to perform bluetooth connections
@@ -371,6 +426,15 @@ public class BluetoothChat extends Activity implements SensorListener{
                 Toast.makeText(this, R.string.bt_not_enabled_leaving, Toast.LENGTH_SHORT).show();
                 finish();
             }
+        case REQUEST_OPEN_FILE:
+             // When the request to open file
+            if (resultCode == Activity.RESULT_OK) {
+                Bundle bundle = null;
+                if (data != null && (bundle=data.getExtras())!=null) {
+                    sendFile(bundle.getString("file"));
+                    //mOutEditText.setText(bundle.getString("file"));
+                }
+            }
         }
     }
 
@@ -415,6 +479,14 @@ public class BluetoothChat extends Activity implements SensorListener{
     
     public void onSensorChanged(int arg0, float[] values) {
         if (mChatService == null) {
+            return;
+        }
+        
+        if (mChatService.getState() != BluetoothService.STATE_CONNECTED) {
+            return;
+        }
+        
+        if (mStop == 1) {
             return;
         }
         //throw new UnsupportedOperationException("Not supported yet.");
@@ -473,6 +545,52 @@ public class BluetoothChat extends Activity implements SensorListener{
         }
         
         return result;
+    }
+    
+    private void sendFile(String file) {
+        FileReader reader;
+        try {
+            reader = new FileReader(file);
+
+            BufferedReader br = new BufferedReader(reader);
+            String s = null;
+            try {
+                while ((s = br.readLine()) != null) {
+                    String [] msgs = s.split(";");
+                    for (int i=0; i < msgs.length; i++) {
+                        sendBytes(stringToHex(msgs[i]));    
+                    }
+                }
+                br.close();
+                reader.close();
+            } catch (IOException ex) {
+                Logger.getLogger(BluetoothChat.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BluetoothChat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public static byte [] stringToHex(String s){
+        if ("0x".equals(s.substring(0, 2)))
+        {
+            s = s.substring(2);
+        }
+        else {
+            return s.getBytes();
+        }
+        
+        byte[] baKeyword = new byte [s.length()/2];
+        for(int i=0; i < baKeyword.length; i++){
+            try {
+                baKeyword[i] = (byte)(0xff & Integer.parseInt(s.substring(i*2, i*2+2),16));
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return baKeyword;
     }
 
 }

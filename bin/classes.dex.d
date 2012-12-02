@@ -2,6 +2,12 @@ C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerate
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$1.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$2.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$3.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$4.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$5.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$6.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$7.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$8.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$9.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$AcceptThread.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$ConnectedThread.class \
@@ -12,6 +18,11 @@ C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerate
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$2.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$3.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$1.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$ViewHolder.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager$1.class \
+C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$attr.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$drawable.class \
 C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$id.class \
