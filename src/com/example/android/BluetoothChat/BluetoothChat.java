@@ -46,7 +46,7 @@ import android.widget.Toast;
 /**
  * This is the main Activity that displays the current chat session.
  */
-public class BluetoothChat extends Activity {
+public class BluetoothChat extends Activity implements SensorListener{
     // Debugging
     private static final String TAG = "BluetoothChat";
     private static final boolean D = true;
@@ -81,7 +81,7 @@ public class BluetoothChat extends Activity {
     // Local Bluetooth adapter
     private BluetoothAdapter mBluetoothAdapter = null;
     // Member object for the chat services
-    private BluetoothChatService mChatService = null;
+    private BluetoothService mChatService = null;
     
     //data for send ToyData;
     private int mSpeed = 10;   // 10 degree/s
@@ -140,6 +140,10 @@ public class BluetoothChat extends Activity {
         } else {
             if (mChatService == null) setupChat();
         }
+        
+        mSensorManager.registerListener(this, 
+                                        SensorManager.SENSOR_ACCELEROMETER,
+                                        SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
@@ -152,11 +156,14 @@ public class BluetoothChat extends Activity {
         // onResume() will be called when ACTION_REQUEST_ENABLE activity returns.
         if (mChatService != null) {
             // Only if the state is STATE_NONE, do we know that we haven't started already
-            if (mChatService.getState() == BluetoothChatService.STATE_NONE) {
+            if (mChatService.getState() == BluetoothService.STATE_NONE) {
               // Start the Bluetooth chat services
               mChatService.start();
             }
         }
+        mSensorManager.registerListener(this, 
+                                        SensorManager.SENSOR_ACCELEROMETER,
+                                        SensorManager.SENSOR_DELAY_GAME);
     }
 
     private void setupChat() {
@@ -183,7 +190,7 @@ public class BluetoothChat extends Activity {
         });
 
         // Initialize the BluetoothChatService to perform bluetooth connections
-        mChatService = new BluetoothChatService(this, mHandler);
+        mChatService = new BluetoothService(this, mHandler);
 
         // Initialize the buffer for outgoing messages
         mOutStringBuffer = new StringBuffer("");
@@ -199,6 +206,8 @@ public class BluetoothChat extends Activity {
     public void onStop() {
         super.onStop();
         if(D) Log.e(TAG, "-- ON STOP --");
+        
+        mSensorManager.unregisterListener(this);
     }
 
     @Override
@@ -207,6 +216,8 @@ public class BluetoothChat extends Activity {
         // Stop the Bluetooth chat services
         if (mChatService != null) mChatService.stop();
         if(D) Log.e(TAG, "--- ON DESTROY ---");
+        
+        mSensorManager.unregisterListener(this);
     }
 
     private void ensureDiscoverable() {
@@ -225,7 +236,7 @@ public class BluetoothChat extends Activity {
      */
     private void sendMessage(String message) {
         // Check that we're actually connected before trying anything
-        if (mChatService.getState() != BluetoothChatService.STATE_CONNECTED) {
+        if (mChatService.getState() != BluetoothService.STATE_CONNECTED) {
             Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -274,15 +285,15 @@ public class BluetoothChat extends Activity {
             case MESSAGE_STATE_CHANGE:
                 if(D) Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
                 switch (msg.arg1) {
-                case BluetoothChatService.STATE_CONNECTED:
+                case BluetoothService.STATE_CONNECTED:
                     setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
                     mConversationArrayAdapter.clear();
                     break;
-                case BluetoothChatService.STATE_CONNECTING:
+                case BluetoothService.STATE_CONNECTING:
                     setStatus(R.string.title_connecting);
                     break;
-                case BluetoothChatService.STATE_LISTEN:
-                case BluetoothChatService.STATE_NONE:
+                case BluetoothService.STATE_LISTEN:
+                case BluetoothService.STATE_NONE:
                     setStatus(R.string.title_not_connected);
                     break;
                 }
@@ -380,5 +391,52 @@ public class BluetoothChat extends Activity {
         }
         return false;
     }
+    
+    public void onSensorChanged(int arg0, float[] values) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+        Toast.makeText(this, "onSensorChanged", Toast.LENGTH_SHORT).show();
+        long curTime = System.currentTimeMillis();
+        
+        if (curTime - lastUpdate < 100)
+            return;
+        lastUpdate = curTime;
+        ToyData data = new ToyData();
+        double diagLen = Math.sqrt(values[0] * values[0] + 
+                                  values[1] * values[1] +
+                                  values[2] * values[2]);
+        int angle;
+       
+        for (int i=0; i < mChanNum; i++){
+            angle = (int)((values[i]/diagLen)*(180/Math.PI));
+            data.setAngle(angle);
+            data.setSpeed(mSpeed);
+            data.setChannel(i);
+            
+            sendBytes(data.getData());
+        }
+        
+    }
+
+    public void onAccuracyChanged(int arg0, int arg1) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    private void sendBytes(byte[] send) {
+        // Check that we're actually connected before trying anything
+        if (mChatService.getState() != BluetoothService.STATE_CONNECTED) {
+            Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check that there's actually something to send
+        if (send.toString().length() > 0) {
+            // Get the message bytes and tell the BluetoothChatService to write
+            mChatService.write(send);
+
+            // Reset out string buffer to zero and clear the edit text field
+            mOutStringBuffer.setLength(0);
+            mOutEditText.setText(mOutStringBuffer);
+        }
+    }  
 
 }
