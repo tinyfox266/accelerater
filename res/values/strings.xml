@@ -18,7 +18,10 @@
     <string name="app_name">Bluetooth Chat</string>
 
     <!--  BluetoothChat -->
-    <string name="send">Send</string>
+    <string name="hex_mode">HexMode</string>
+    <string name="char_mode">CharMode</string>    
+    <string name="stop">StopAccData</string>  
+    <string name="open">Open</string>
     <string name="not_connected">You are not connected to a device</string>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
     <string name="title_connecting">connecting...</string>

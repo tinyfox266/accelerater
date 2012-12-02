@@ -71,6 +71,11 @@ public class BluetoothChat extends Activity implements SensorListener{
     private ListView mConversationView;
     private EditText mOutEditText;
     private Button mSendButton;
+   
+    private Button mHexModeButton;
+    private Button mCharModeButton;
+    private Button mStopButton;
+    private Button mOpenButton;
 
     // Name of the connected device
     private String mConnectedDeviceName = null;
@@ -86,10 +91,17 @@ public class BluetoothChat extends Activity implements SensorListener{
     //data for send ToyData;
     private int mSpeed = 10;   // 10 degree/s
     private final int mChanNum = 3;
-    private final int mSendDuration = 100; // 10 times per second
+    private final int mSendDuration = 1000; // 10 times per second
     private long lastUpdate;
+    
+    
     private SensorManager mSensorManager;
     private Sensor mSensor;
+    
+    private int mShowMode = mHexMode; 
+    
+    private static final int mCharMode = 0;
+    private static final int mHexMode = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -188,6 +200,8 @@ public class BluetoothChat extends Activity implements SensorListener{
                 sendMessage(message);
             }
         });
+        
+        
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothService(this, mHandler);
@@ -301,7 +315,14 @@ public class BluetoothChat extends Activity implements SensorListener{
             case MESSAGE_WRITE:
                 byte[] writeBuf = (byte[]) msg.obj;
                 // construct a string from the buffer
-                String writeMessage = new String(writeBuf);
+                String writeMessage;
+                if (mShowMode == mHexMode) {
+                    writeMessage = toHexString(writeBuf);               
+                }
+                else {
+                    writeMessage = new String(writeBuf);
+                }
+
                 mConversationArrayAdapter.add("Me:  " + writeMessage);
                 break;
             case MESSAGE_READ:
@@ -400,7 +421,7 @@ public class BluetoothChat extends Activity implements SensorListener{
         Toast.makeText(this, "onSensorChanged", Toast.LENGTH_SHORT).show();
         long curTime = System.currentTimeMillis();
         
-        if (curTime - lastUpdate < 100)
+        if (curTime - lastUpdate < mSendDuration)
             return;
         lastUpdate = curTime;
         ToyData data = new ToyData();
@@ -440,6 +461,18 @@ public class BluetoothChat extends Activity implements SensorListener{
             mOutStringBuffer.setLength(0);
             mOutEditText.setText(mOutStringBuffer);
         }
+       
     }  
+    
+    
+    private String toHexString(byte [] bytes) {
+        String result = new String();
+        for (int i=0; i < bytes.length; i++) {
+            result = result.concat(Integer.toHexString((bytes[i]>>4) & 0x0F));
+            result = result.concat(Integer.toHexString(bytes[i] & 0x0F));            
+        }
+        
+        return result;
+    }
 
 }
