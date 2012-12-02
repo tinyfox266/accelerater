@@ -393,6 +393,9 @@ public class BluetoothChat extends Activity implements SensorListener{
     }
     
     public void onSensorChanged(int arg0, float[] values) {
+        if (mChatService == null) {
+            return;
+        }
         //throw new UnsupportedOperationException("Not supported yet.");
         Toast.makeText(this, "onSensorChanged", Toast.LENGTH_SHORT).show();
         long curTime = System.currentTimeMillis();
