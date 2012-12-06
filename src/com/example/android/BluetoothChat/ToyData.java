@@ -17,7 +17,7 @@ public class ToyData {
     private byte mangle; //range over 0-30 degree
     private byte mspeed; // range over  1 degree/second
     private byte mparity; // sum of bits of channel, angle, speed,
-    private static int byteNum = 7;
+    private static int byteNum = 8;
     
     public void setChannel(byte channel) {
         mchannel = channel;
@@ -56,9 +56,10 @@ public class ToyData {
         mdata[1] = mhead2nd;
         mdata[2] = mchannel;
         mdata[3] = mangle;
-        mdata[4] = mparity;
-        mdata[5] = mtail1st;
-        mdata[6] = mtail2snd;
+        mdata[4] = mspeed;        
+        mdata[5] = mparity;
+        mdata[6] = mtail1st;
+        mdata[7] = mtail2snd;
         return mdata;
         
     }

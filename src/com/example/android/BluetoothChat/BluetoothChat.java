@@ -102,7 +102,7 @@ public class BluetoothChat extends Activity implements SensorListener{
     private final int mChanNum = 3;
     private final int mSendDuration = 1000; // 10 times per second
     private long lastUpdate;
-    private int mStop = 0;
+    private int mStop = 1;
     
     
     private SensorManager mSensorManager;
@@ -207,7 +207,17 @@ public class BluetoothChat extends Activity implements SensorListener{
                 // Send a message using content of the edit text widget
                 TextView view = (TextView) findViewById(R.id.edit_text_out);
                 String message = view.getText().toString();
-                sendMessage(message);
+                
+                String [] msgs = message.split(";");
+                for (int i=0; i < msgs.length; i++) {
+                   // if (isHex(msgs[i])) {
+                        sendBytes(stringToHex(msgs[i]));
+                   // } else {
+                    //    sendMessage(msgs[i]);
+                    //}
+                        
+                }
+                
             }
         });
         
@@ -490,7 +500,6 @@ public class BluetoothChat extends Activity implements SensorListener{
             return;
         }
         //throw new UnsupportedOperationException("Not supported yet.");
-        Toast.makeText(this, "onSensorChanged", Toast.LENGTH_SHORT).show();
         long curTime = System.currentTimeMillis();
         
         if (curTime - lastUpdate < mSendDuration)
