@@ -602,4 +602,8 @@ public class BluetoothChat extends Activity implements SensorListener{
         return baKeyword;
     }
 
+    public int convertAngle(int angle) {
+        return (int) Math.PI/4 + (angle+Math.PI)*(1/4);
+    }
+
 }
