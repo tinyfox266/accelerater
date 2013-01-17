@@ -516,9 +516,11 @@ public class BluetoothChat extends Activity implements SensorListener{
                                                  // direction y axis turns,
                                                  // left(<0) or right(>0)
         yangle = Math.acos(Math.abs(values[1])/diagLen); 
-        yConvertAngle = Math.PI/2 + (xangle<0?-1:1)*yangle; 
+        yConvertAngle = Math.PI/2 + (xangle>Math.PI/2?-1:1)*yangle; 
         
-        zangle = Math.acos(Math.abs(values[2])/diagLen);
+        zangle = Math.acos((values[2])/diagLen);
+        
+        
         zConvertAngle = zangle;
         
         data.setAngle(convertAngle(yConvertAngle));
@@ -616,7 +618,7 @@ public class BluetoothChat extends Activity implements SensorListener{
 // translate the angle from radian to degree
 // and tranform the angle rangle to Pi/4 -- 3Pi/4
     public int convertAngle(double angle) {
-        return (int) (( Math.PI/6 + (angle/3))*180/Math.PI);
+        return (int) (( Math.PI/3 + (angle/3))*180/Math.PI);
     }
 
 }
