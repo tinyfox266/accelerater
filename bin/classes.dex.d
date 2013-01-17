@@ -1,35 +1,35 @@
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes.dex : \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$1.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$2.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$3.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$4.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$5.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$6.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$7.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$8.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$9.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$AcceptThread.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$ConnectedThread.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$ConnectThread.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\BuildConfig.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$1.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$2.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$3.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$1.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$ViewHolder.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager$1.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$attr.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$drawable.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$id.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$layout.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$menu.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R$string.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\R.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\SensorListerner.class \
-C:\Documents and Settings\Administrator\My Documents\NetBeansProjects\Accelerater\bin\classes\com\example\android\BluetoothChat\ToyData.class \
-C:\Program Files\Android\android-sdk\tools\support\annotations.jar \
+F:\Projects\Android\Accelerater\bin\classes.dex : \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$1.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$2.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$3.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$4.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$5.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$6.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$7.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$8.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$9.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$AcceptThread.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$ConnectedThread.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService$ConnectThread.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothService.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BuildConfig.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$1.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$2.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity$3.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\DeviceListActivity.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$1.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter$ViewHolder.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\MyAdapter.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager$1.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\MyFileManager.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$attr.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$drawable.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$id.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$layout.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$menu.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R$string.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\R.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\SensorListerner.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\ToyData.class \
+F:\Projects\Android\Accelerater\bin\dexedLibs\annotations-fe00be6591dc68d4f1a7e7d7799c8fcc.jar \

@@ -1,4 +1,4 @@
-F:\Projects\Android\Accelerater\gen\com\example\android\BluetoothChat\R.java \
+F:\Projects\Android\Accelerater\bin\Accelarater.ap_ \
  : F:\Projects\Android\Accelerater\res\drawable\app_icon.png \
 F:\Projects\Android\Accelerater\res\drawable\app_icon_1.png \
 F:\Projects\Android\Accelerater\res\drawable\app_icon_back.png \

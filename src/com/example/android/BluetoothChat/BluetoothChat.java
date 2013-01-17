@@ -509,16 +509,28 @@ public class BluetoothChat extends Activity implements SensorListener{
         double diagLen = Math.sqrt(values[0] * values[0] + 
                                   values[1] * values[1] +
                                   values[2] * values[2]);
-        int angle;
+        double xangle,yangle,zangle;
+        double yConvertAngle, zConvertAngle;
        
-        for (int i=0; i < mChanNum; i++){
-            angle = (int)((values[i]/diagLen)*(180/Math.PI));
-            data.setAngle(angle);
-            data.setSpeed(mSpeed);
-            data.setChannel(i);
-            
-            sendBytes(data.getData());
-        }
+        xangle = Math.acos((values[0])/diagLen); // xangle is used to determine which
+                                                 // direction y axis turns,
+                                                 // left(<0) or right(>0)
+        yangle = Math.acos(Math.abs(values[1])/diagLen); 
+        yConvertAngle = Math.PI/2 + (xangle<0?-1:1)*yangle; 
+        
+        zangle = Math.acos(Math.abs(values[2])/diagLen);
+        zConvertAngle = zangle;
+        
+        data.setAngle(convertAngle(yConvertAngle));
+        data.setSpeed(mSpeed);
+        data.setChannel(0);
+        sendBytes(data.getData());
+        
+        data.setAngle(convertAngle(zConvertAngle));
+        data.setSpeed(mSpeed);
+        data.setChannel(1);
+        sendBytes(data.getData());
+        
         
     }
 
@@ -601,9 +613,10 @@ public class BluetoothChat extends Activity implements SensorListener{
         }
         return baKeyword;
     }
-
-    public int convertAngle(int angle) {
-        return (int) Math.PI/4 + (angle+Math.PI)*(1/4);
+// translate the angle from radian to degree
+// and tranform the angle rangle to Pi/4 -- 3Pi/4
+    public int convertAngle(double angle) {
+        return (int) (( Math.PI/4 + (angle/2))*180/Math.PI);
     }
 
 }
