@@ -616,7 +616,7 @@ public class BluetoothChat extends Activity implements SensorListener{
 // translate the angle from radian to degree
 // and tranform the angle rangle to Pi/4 -- 3Pi/4
     public int convertAngle(double angle) {
-        return (int) (( Math.PI/4 + (angle/2))*180/Math.PI);
+        return (int) (( Math.PI/6 + (angle/3))*180/Math.PI);
     }
 
 }
