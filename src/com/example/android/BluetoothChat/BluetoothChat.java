@@ -100,9 +100,11 @@ public class BluetoothChat extends Activity implements SensorListener{
     //data for send ToyData;
     private int mSpeed = 10;   // 10 degree/s
     private final int mChanNum = 3;
-    private final int mSendDuration = 1000; // 10 times per second
+    private final int mSendDuration = 1000; // 1 times per second
     private long lastUpdate;
     private int mStop = 1;
+    private final int mRandomDuration = 500000; //2 times per second
+    private long lastRandTime;
     
     
     private SensorManager mSensorManager;
@@ -502,6 +504,7 @@ public class BluetoothChat extends Activity implements SensorListener{
         //throw new UnsupportedOperationException("Not supported yet.");
         long curTime = System.currentTimeMillis();
         
+        
         if (curTime - lastUpdate < mSendDuration)
             return;
         lastUpdate = curTime;
@@ -510,7 +513,9 @@ public class BluetoothChat extends Activity implements SensorListener{
                                   values[1] * values[1] +
                                   values[2] * values[2]);
         double xangle,yangle,zangle;
+        int randAngle1,randAngle2;
         double yConvertAngle, zConvertAngle;
+ 
        
         xangle = Math.acos((values[0])/diagLen); // xangle is used to determine which
                                                  // direction y axis turns,
@@ -519,9 +524,14 @@ public class BluetoothChat extends Activity implements SensorListener{
         yConvertAngle = Math.PI/2 + (xangle>Math.PI/2?-1:1)*yangle; 
         
         zangle = Math.acos((values[2])/diagLen);
-        
-        
         zConvertAngle = zangle;
+        
+        randAngle1 = 60+(int)((Math.random()*60));
+        randAngle2 = 60+(int)((Math.random()*60));
+        
+       
+        
+        
         
         data.setAngle(convertAngle(yConvertAngle));
         data.setSpeed(mSpeed);
@@ -532,6 +542,22 @@ public class BluetoothChat extends Activity implements SensorListener{
         data.setSpeed(mSpeed);
         data.setChannel(1);
         sendBytes(data.getData());
+        
+        data.setAngle(randAngle1);
+        data.setSpeed(mSpeed);
+        data.setChannel(2);
+        sendBytes(data.getData());
+        
+        data.setAngle(randAngle2);
+        data.setSpeed(mSpeed);
+        data.setChannel(3);
+        sendBytes(data.getData());       
+        
+        
+        
+        
+        
+        
         
         
     }
