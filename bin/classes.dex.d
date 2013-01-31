@@ -1,5 +1,6 @@
 F:\Projects\Android\Accelerater\bin\classes.dex : \
 F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$1.class \
+F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$10.class \
 F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$2.class \
 F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$3.class \
 F:\Projects\Android\Accelerater\bin\classes\com\example\android\BluetoothChat\BluetoothChat$4.class \

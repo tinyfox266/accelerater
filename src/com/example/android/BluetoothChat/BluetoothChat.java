@@ -85,6 +85,8 @@ public class BluetoothChat extends Activity implements SensorListener{
     private Button mStopButton;
     private Button mOpenButton;
     private Button mCleanButton;
+    private Button mSetrateButton;
+
 
     // Name of the connected device
     private String mConnectedDeviceName = null;
@@ -100,7 +102,7 @@ public class BluetoothChat extends Activity implements SensorListener{
     //data for send ToyData;
     private int mSpeed = 10;   // 10 degree/s
     private final int mChanNum = 3;
-    private final int mSendDuration = 1000; // 1 times per second
+    private int mSendDuration = 1000; // 1 times per second
     private long lastUpdate;
     private int mStop = 1;
     private final int mRandomDuration = 500000; //2 times per second
@@ -221,6 +223,19 @@ public class BluetoothChat extends Activity implements SensorListener{
                 }
                 
             }
+        });
+        
+        
+        mSetrateButton = (Button) findViewById(R.id.button_setrate);
+        mSetrateButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                TextView view = (TextView) findViewById(R.id.edit_text_rate);
+                String rateString = view.getText().toString();
+                mSendDuration = Integer.parseInt(rateString);
+                
+                
+            }
+        
         });
         
         mHexModeButton = (Button) findViewById(R.id.button_hex_mode);

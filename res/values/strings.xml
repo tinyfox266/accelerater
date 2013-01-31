@@ -18,6 +18,7 @@
     <string name="app_name">Accelerator Control</string>
 
     <!--  BluetoothChat -->
+    <string name="setrate">Set</string>
     <string name="hex_mode">HexMode</string>
     <string name="char_mode">CharMode</string> 
     <string name="begin">BeginAccData</string>
